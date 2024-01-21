@@ -73,4 +73,3 @@ document
     // message.remove();
     message.parentElement.removeChild(message);
   });
-let newcommit;
