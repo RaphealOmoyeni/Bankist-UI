@@ -7,6 +7,8 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -28,6 +30,44 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
+});
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1cords = section1.getBoundingClientRect();
+  console.log(s1cords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // scrolling
+  // window.scrollTo(
+  //   s1cords.left + window.pageXOffset,
+  //   s1cords.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1cords.left + window.pageXOffset,
+  //   top: s1cords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+///////////////////////////////////////////////////
+// Page Navigation
+
+document.querySelectorAll('.nav__link').forEach(function (el) {
+  el.addEventListener('click', function (e) {
+    console.log('LINK');
+  });
 });
 
 // ///////////////////////////////////////////////
@@ -123,40 +163,41 @@ document.addEventListener('keydown', function (e) {
 // // Don't use
 // logo.className = 'jonas';
 
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
+// const h1 = document.querySelector('h1');
 
-btnScrollTo.addEventListener('click', function (e) {
-  const s1cords = section1.getBoundingClientRect();
-  console.log(s1cords);
+// const alert1 = function (e) {
+//   alert('addEventListener: Great! You are reading the heading :D');
 
-  console.log(e.target.getBoundingClientRect());
+// h1.removeEventListener('mouseenter', alert1);
+// };
 
-  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
+// h1.addEventListener('mouseenter', alert1);
 
-  console.log(
-    'height/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
+// setTimeout(() => h1.removeEventListener('mouseenter', alert1), 3000);
+// h1.onmouseenter = function (e) {
+//   alert('addEventListener: Great! You are reading the heading :D');
+// };
 
-  // scrolling
-  // window.scrollTo(
-  //   s1cords.left + window.pageXOffset,
-  //   s1cords.top + window.pageYOffset
-  // );
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// console.log(randomColor());
 
-  // window.scrollTo({
-  //   left: s1cords.left + window.pageXOffset,
-  //   top: s1cords.top + window.pageYOffset,
-  //   behavior: 'smooth',
-  // });
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('LINK', e.target, e.currentTarget);
+//   console.log(e.currentTarget === this);
 
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
+//   // Stop propagation
+//   // e.stopPropagation();
+// });
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('CONTAINER', e.target, e.currentTarget);
+// });
 
-const h1 = document.querySelector('h1');
-
-h1.addEventListener('mouseenter', function (e) {
-  alert('addEventListener: Great! You are reading the heading :D');
-});
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('NAV', e.target, e.currentTarget);
+// });
