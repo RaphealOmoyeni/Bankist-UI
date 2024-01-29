@@ -178,7 +178,8 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 
 headerObserver.observe(header);
 
-const newOne = 'Delete Later';
+// Reveal sections
+
 // ///////////////////////////////////////////////
 ///////////////////////////////////////////////////
 
